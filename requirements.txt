@@ -1,0 +1,4 @@
+-i https://mirrors.aliyun.com/pypi/simple/
+torch==1.7.0
+soundfile
+editdistance
