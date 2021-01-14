@@ -6,12 +6,10 @@ model, cfg, task = fairseq.checkpoint_utils.load_model_ensemble_and_task([cp_pat
 model = model[0]
 model.eval()
 
-wav_input_16khz = torch.randn(10, 3000)
-z = model.feature_extractor(wav_input_16khz)
-c = model.feature_aggregator(z)
+wav_input_16khz = torch.randn(1, 100000)
 
-# print("z:", z)
+z = model.feature_extractor(wav_input_16khz)
 print("z.size:", z.size())
 
-# print("c:", c)
+c = model.feature_aggregator(z)
 print("c.size:", c.size())
