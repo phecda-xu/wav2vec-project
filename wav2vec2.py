@@ -1,13 +1,10 @@
 import torch
-from fairseq.models.wav2vec import Wav2VecModel
+import fairseq
 
-cp = torch.load('../models/wav2vec_small_960h.pt')
-model = Wav2VecModel.build_model(cp['args'], task=None)
-model.load_state_dict(cp['model'])
+model, cfg, task = fairseq.checkpoint_utils.load_model_ensemble_and_task(['models/wav2vec2_base.pt'])
+model = model[0]
+model.eval()
 
-wav_input_16khz = torch.randn(10, 3000)
-tensors = torch.from_numpy(wav_input_16khz).unsqueeze(0)
-
-z = model.feature_extractor(tensors)
-c = model.feature_aggregator(z)
-print('c:', c)
+wav_input_16khz = torch.randn(1, 100000)
+c = model(wav_input_16khz, mask=False, features_only=True)["x"]
+print('c size:', c.size())
