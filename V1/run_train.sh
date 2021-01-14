@@ -1,7 +1,7 @@
 #! /usr/bin/bash
 
-python fairseq/train.py data/ \
---save-dir models/ \
+python ../fairseq/train.py ../data/ \
+--save-dir ../models/ \
 --num-workers 6 \
 --fp16 \
 --max-update 400000 \
