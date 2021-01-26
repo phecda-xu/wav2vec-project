@@ -13,9 +13,8 @@ print("z.size:", z.size())
 p = model.post_extract_proj(z.transpose(2, 1))
 print("p.size:", p.size())
 
-c = model.final_proj(p)
-print("c.size:", c.size())
+f = model.final_proj(p)
+print("f.size:", f.size())
 
-y = model(wav_input_16khz, mask=False, features_only=True)["x"]
-y = y.transpose(1, 2)
-print('y size:', y.size())
+c = model(wav_input_16khz, mask=False, features_only=True)["x"]
+print('c size:', c.size())
