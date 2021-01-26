@@ -1,4 +1,10 @@
 -i https://mirrors.aliyun.com/pypi/simple/
-torch==1.7.0
+torch==1.7.1
 soundfile
 editdistance
+sox
+librosa
+scipy
+matplotlib
+Levenshtein
+pypinyin
