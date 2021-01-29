@@ -64,12 +64,11 @@ class TDNLayer(nn.Module):
 
 
 class TDNNet(nn.Module):
-    def __init__(self, labels, audio_conf=None, input_channels=512):
+    def __init__(self, labels, net_arch='medium', audio_conf=None, input_channels=512):
         super(TDNNet, self).__init__()
         self.audio_conf = audio_conf
         self.labels = labels
         num_classes = len(self.labels)  # space index
-        net_arch = self.audio_conf["net_arch"]
         if net_arch == "super":
             self.tdnn = nn.Sequential(
                 TDNLayer(context=3, stride=1, input_channels=input_channels, output_channels=2000, dilate=1, pad=[13, 9]),
@@ -172,7 +171,7 @@ class TDNNet(nn.Module):
 
 
 class FCFintune(nn.Module):
-    def __init__(self, labels, audio_conf=None, input_channels=512):
+    def __init__(self, labels, net_arch='base', audio_conf=None, input_channels=512):
         super(FCFintune, self).__init__()
         self.audio_conf = audio_conf
         self.labels = labels

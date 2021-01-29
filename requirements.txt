@@ -8,3 +8,5 @@ scipy
 matplotlib
 Levenshtein
 pypinyin
+visdom
+tensorboard
